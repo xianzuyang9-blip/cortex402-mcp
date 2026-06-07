@@ -1,0 +1,43 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Ooak21/cortex402-mcp",
+  "description": "Pay-per-call x402 data products on Base mainnet — sanctions, aviation weather, US property.",
+  "repository": {
+    "url": "https://github.com/Ooak21/cortex402-mcp",
+    "source": "github"
+  },
+  "version": "0.4.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "cortex402-mcp",
+      "version": "0.4.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "CORTEX402_WALLET_PRIVATE_KEY",
+          "description": "Private key (hex, 0x-prefixed) for an EVM wallet on Base mainnet holding USDC. Used to sign EIP-3009 transferWithAuthorization for each call. Easiest funding: Coinbase Wallet → Buy → USDC on Base network → debit card (~$5 covers ~50 calls).",
+          "isRequired": true,
+          "format": "string",
+          "isSecret": true
+        },
+        {
+          "name": "CORTEX402_BASE_URL",
+          "description": "Override the API base URL. Defaults to https://cortex402.vercel.app — only set this for staging or local development.",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false
+        },
+        {
+          "name": "CORTEX402_MAX_PAYMENT_USDC",
+          "description": "Per-call payment ceiling in USDC. Defaults to 5.00 (covers sanctions $0.50, aviation $0.10, property $2.00 with headroom). Raise if calling other x402 endpoints through this server.",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false
+        }
+      ]
+    }
+  ]
+}

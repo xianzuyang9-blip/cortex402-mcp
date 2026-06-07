@@ -1,0 +1,50 @@
+{
+  "name": "cortex402-mcp",
+  "version": "0.4.0",
+  "description": "MCP server for CorteX402 — 7 pay-per-call x402 data products on Base mainnet: sanctions screening, aviation weather, mortgage rates, US property dossier, title chain, wallet balance, and agent session auth. Settles in USDC per call.",
+  "mcpName": "io.github.Ooak21/cortex402-mcp",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "cortex402-mcp": "index.js"
+  },
+  "files": [
+    "index.js",
+    "README.md"
+  ],
+  "scripts": {
+    "start": "node index.js",
+    "publish:npm": "npm publish --access public"
+  },
+  "engines": {
+    "node": ">=20.6"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "viem": "^2.21.0",
+    "x402-fetch": "^0.5.0",
+    "zod": "^3.25.0"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "x402",
+    "base",
+    "usdc",
+    "claude",
+    "agent-tools",
+    "sanctions",
+    "aviation-weather",
+    "property-data",
+    "wallet-balance",
+    "callauth402",
+    "title-chain"
+  ],
+  "homepage": "https://innovativeblockchainsolutions.live/CorteX402/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ooak21/cortex402-mcp"
+  },
+  "author": "Innovative Blockchain Solutions",
+  "license": "MIT"
+}
