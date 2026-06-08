@@ -43,7 +43,10 @@
   "homepage": "https://innovativeblockchainsolutions.live/CorteX402/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ooak21/cortex402-mcp"
+    "url": "git+https://github.com/Ooak21/cortex402-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ooak21/cortex402-mcp/issues"
   },
   "author": "Innovative Blockchain Solutions",
   "license": "MIT"
