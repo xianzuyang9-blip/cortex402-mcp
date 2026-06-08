@@ -32,7 +32,7 @@
 //
 // Fund the wallet with at least $3 USDC on Base mainnet for ~20 test calls.
 //
-// Source: https://github.com/Ooak21/cortex402
+// Source: https://github.com/Ooak21/cortex402-mcp
 // Catalog: https://innovativeblockchainsolutions.live/CorteX402/
 // Marketplace: https://agentic.market/services/jtifhcvbgxqwlywugvjv-supabase-co
 
@@ -41,6 +41,28 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { wrapFetchWithPayment } from "x402-fetch";
 import { privateKeyToAccount } from "viem/accounts";
 import { z } from "zod";
+
+const VERSION = "0.4.0";
+const args = new Set(process.argv.slice(2));
+
+if (args.has("--version") || args.has("-v")) {
+  console.log(VERSION);
+  process.exit(0);
+}
+
+if (args.has("--help") || args.has("-h")) {
+  console.log(`CorteX402 MCP server v${VERSION}
+
+Usage:
+  cortex402-mcp [--help] [--version]
+
+Environment:
+  CORTEX402_WALLET_PRIVATE_KEY  Required when starting the MCP server.
+  CORTEX402_MAX_PAYMENT_USDC    Optional max payment amount, defaults to 5.
+  CORTEX402_BASE_URL            Optional API base URL override.
+`);
+  process.exit(0);
+}
 
 // Supabase hosts 5 wraps (dual-emit v1+v2, polished metadata)
 const SB = "https://jtifhcvbgxqwlywugvjv.supabase.co/functions/v1";
@@ -75,7 +97,7 @@ const fetchWithPay = wrapFetchWithPayment(fetch, account, MAX_PAYMENT_ATOMIC);
 
 const server = new McpServer({
   name: "cortex402",
-  version: "0.4.0",
+  version: VERSION,
 });
 
 // ─── Tool 1: Sanctions Screen ────────────────────────────────────────────────
